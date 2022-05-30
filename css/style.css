@@ -34,5 +34,18 @@ header button {
 }
 
 button + button {
-	margin-left: 10px;
+	margin-left: 30px;
+}
+
+main {
+	min-height: calc(100vh - 100px - 100px);
+}
+
+
+footer {
+	display: flex;
+	height: 100px;
+	justify-content: center;
+	align-items: center;
+	border-top: solid 2px black;
 }
