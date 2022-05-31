@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./css/global.css">
 	<link rel="stylesheet" href="./css/add.css">
+	<script src="./js/type.js" defer></script>
 	<title>Product Add</title>
 </head>
 
@@ -22,18 +23,37 @@
 		<form action="" id="product_form">
 			<div>
 				<label for="sku">SKU</label>
-				<input type="text" id="sku" name="sku" size="30">
+				<span><input type="text" id="sku" name="sku" size="30"></span>
 				<label for="name">Name</label>
-				<input type="text" id="name" name="name" size="30">
+				<span><input type="text" id="name" name="name" size="30"></span>
 				<label for="price">Price ($)</label>
-				<input type="text" id="price" name="price" size="30">
+				<span><input type="text" id="price" name="price" size="30"></span>
 			</div>
-			<label for="type">Type Switcher</label>
+			<label for="productTypes">Type Switcher</label>
 			<select name="productType" id="productType">
 				<option value="dvd" id="DVD">DVD</option>
 				<option value="furniture" id="Furniture">Furniture</option>
 				<option value="book" id="Book">Book</option>
 			</select>
+			<div id="dvd-form">
+				<label for="size">Size (MB)</label>
+				<input type="text" id="size" name="size">
+				<p>Please provide size in megabytes</p>
+			</div>
+			<div id="furniture-form">
+				<label for="height">Height (CM)</label>
+				<input type="text" id="height" name="height">
+				<label for="width">Width (CM)</label>
+				<input type="text" id="width" name="width">
+				<label for="length">Length (CM)</label>
+				<input type="text" id="length" name="length">
+				<p>Please provide dimensions in HxWxL format</p>
+			</div>
+			<div id="book-form">
+				<label for="weight">Weight (KG)</label>
+				<input type="text" id="weight" name="weight">
+				<p>Please provide weight in kilograms</p>
+			</div>
 		</form>
 	</main>
 	<footer>
@@ -42,7 +62,3 @@
 </body>
 
 </html>
-
-<script>
-
-</script>
