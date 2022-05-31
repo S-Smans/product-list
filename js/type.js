@@ -8,16 +8,16 @@ selection.addEventListener("change", (event) => {
 const productForm= (type) => {
   // Object that stores each types functions
   const types = {
-    dvd: changeForm("dvdForm"),
-    furniture: changeForm("furnitureForm"),
-    book: changeForm("bookForm"),
+    dvd: setFormVisible("dvdForm"),
+    furniture: setFormVisible("furnitureForm"),
+    book: setFormVisible("bookForm"),
   };
 
 	// returns function that allows form to become visible
   return types[type];
 };
 
-const changeForm = (type) => {
+const setFormVisible = (type) => {
 	// Get all forms from document
   const dvdForm = document.getElementById("dvd-form");
   const furnitureForm = document.getElementById("furniture-form");
