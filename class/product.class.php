@@ -5,7 +5,7 @@ class Product extends Dbh
 
 	protected function getProduct()
 	{
-		$sql = "SELECT * FROM products";
+		$sql = "SELECT SKU, Name, Price, Attribute FROM products";
 		$stmt = $this->connect()->query($sql);
 		return $stmt->fetchAll();
 	}

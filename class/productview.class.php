@@ -3,6 +3,7 @@
 class ProductView extends Product
 {
 
+	// Gets all products and sends it as JSON to javascript
 	public function showProduct()
 	{
 		$results = $this->getProduct();

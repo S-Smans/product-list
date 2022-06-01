@@ -1,5 +1,5 @@
 <?php
 
-class ProductContr extends Users {
+class ProductContr extends Product {
 	
 }
