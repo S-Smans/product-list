@@ -1,14 +1,17 @@
 <?php
 
-class Dbh {
+class Dbh
+{
 	private $host = "localhost";
 	private $user = "root";
 	private $pass = "";
 	private $name = "product_list";
 
-	protected function connect() {
+	protected function connect()
+	{
 		$dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->name;
 		$pdo = new PDO($dsn, $this->user, $this->pass);
+		// Adds an default fetch attribute assoc 
 		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		return $pdo;
 	}
