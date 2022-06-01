@@ -9,7 +9,7 @@ class Product {
   // Creates a product card that is displayed in DOM
   createProductCard() {
 		const main = document.querySelector("main");
-		
+
     // creates elements
     const card = document.createElement("div");
     const checkbox = document.createElement("input");
@@ -74,6 +74,3 @@ $(document).ready(() => {
     });
   });
 });
-
-// create a card div
-// create a checkbox
