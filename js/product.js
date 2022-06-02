@@ -1,57 +1,62 @@
 class Product {
-  constructor(sku, name, price, attribute) {
+  constructor(sku, name, price, value, type) {
     this.sku = sku;
     this.name = name;
     this.price = price;
-    this.attribute = attribute;
+    this.value = value;
+    this.type = type;
   }
 
   // Creates a product card that is displayed in DOM
   createProductCard() {
-		const main = document.querySelector("main");
+    const main = document.querySelector("main");
 
     // creates elements
     const card = document.createElement("div");
     const checkbox = document.createElement("input");
-		const div = document.createElement("div");
+    const div = document.createElement("div");
 
     // card
     card.className = "card";
 
     // checkbox
     checkbox.type = "checkbox";
+    checkbox.className = "delete-checkbox";
 
     // SKU
-		// adds 2 decimal point
-		const decimalSku = this.sku;
     const pSKU = this.addContent(this.sku);
 
     // name
-    const name = this.addContent(this.name)
+    const name = this.addContent(this.name);
 
     // price
-    const price = this.addContent(this.price.toFixed(2)+ " $");
+    const price = this.addContent(this.price.toFixed(2) + " $");
 
-    // attribute
-    const attribute = this.addContent(this.attribute);
+    // value
+    const measurement = {
+      Size: this.addContent("Size: " + this.value + " MB"),
+      Weight: this.addContent("Weight: " + this.value + " KG"),
+      Dimension: this.addContent("Dimension: " + this.value),
+    };
+    const value = measurement[this.type];
 
-		// appends to div so content and checkbox styling is seperate
+    // appends to div so content and checkbox styling is seperate
     div.append(pSKU);
     div.append(name);
     div.append(price);
-    div.append(attribute);
-		
+    div.append(value);
+
     card.append(checkbox);
-		card.append(div);
+    card.append(div);
     main.append(card);
   }
 
-	// Adds basic p tag to each property
-	addContent(prop) {
-		const para = document.createElement("p");
-		para.textContent = prop;
-		return para;
-	}
+  // Adds basic p tag to each property
+  addContent(prop) {
+    const para = document.createElement("p");
+    para.textContent = prop;
+    return para;
+  }
 }
 
 // Runs when website loads
@@ -59,14 +64,14 @@ $(document).ready(() => {
   $.get("./includes/loadProducts.inc.php", (data) => {
     // Parses data to readable json
     data = JSON.parse(data);
-
     // creates a Product object for each row
     data.forEach((prop) => {
       const products = new Product(
         prop["SKU"],
         prop["Name"],
         prop["Price"],
-        prop["Attribute"]
+        prop["Value"],
+        prop["Type"]
       );
 
       // creates a card that is shown in DOM
