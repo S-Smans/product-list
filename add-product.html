@@ -15,12 +15,12 @@
 	<header>
 		<h1>Product Add</h1>
 		<div>
-			<button>SAVE</button>
+			<button type="submit" name="submit" form="product_form">SAVE</button>
 			<button onclick="location.href='/product-list/'">CANCEL</button>
 		</div>
 	</header>
 	<main>
-		<form action="" id="product_form">
+		<form action="./includes/createProduct.inc.php" id="product_form" method="post">
 			<div>
 				<label for="sku">SKU</label>
 				<span><input type="text" id="sku" name="sku" size="30"></span>

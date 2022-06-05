@@ -1,5 +1,10 @@
 <?php
 
-class ProductContr extends Product {
-	
+class ProductContr extends Product
+{
+
+    public function createProduct($sku, $name, $price, $value, $type)
+    {
+        $this->setProduct($sku, $name, $price, $value, $type);
+    }
 }

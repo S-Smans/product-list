@@ -12,4 +12,4 @@ INSERT INTO `products`(`SKU`, `Name`, `Price`, `Value`, `Type`) VALUES ('GGWP000
 INSERT INTO `products`(`SKU`, `Name`, `Price`, `Value`, `Type`) VALUES ('TR120555','Chair','40','24x45x15', 'Dimension');
 
 -- Create the products table
-CREATE TABLE products (productId int PRIMARY KEY AUTO_INCREMENT, SKU varchar(255), Name varchar(255), Price int, Value varchar(255), Type varchar(255));
+CREATE TABLE products (productId INT NOT NULL PRIMARY KEY AUTO_INCREMENT, SKU VARCHAR(255) NOT NULL, Name VARCHAR(255) NOT NULL, Price INT NOT NULL, Value VARCHAR(255) NOT NULL, Type VARCHAR(255) NOT NULL);
