@@ -35,6 +35,7 @@ select:focus {
 #dvd-form,
 #book-form {
   display: none;
+  grid-template-columns: repeat(1,1fr);
   width: 20%;
   padding-top: 25px;
 }
