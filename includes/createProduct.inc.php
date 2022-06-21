@@ -9,6 +9,7 @@ if (isset($_POST["submit"])) {
     $type = new $productType();
     $createProduct = new createProduct();
     $createProduct->create($type);
+    header('Location: http://localhost/product-list/');
 }
 
 class createProduct

@@ -34,9 +34,9 @@ class Product {
 
     // value
     const measurement = {
-      Size: this.addContent("Size: " + this.value + " MB"),
-      Weight: this.addContent("Weight: " + this.value + " KG"),
-      Dimension: this.addContent("Dimension: " + this.value),
+      dvd: this.addContent("Size: " + this.value + " MB"),
+      book: this.addContent("Weight: " + this.value + " KG"),
+      furniture: this.addContent("Dimension: " + this.value),
     };
     const value = measurement[this.type];
 

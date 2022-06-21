@@ -1,12 +1,15 @@
 <?php
 
 class Dvd extends productType
-{
-    function setType() {
+{   
+    public function setType()
+    {   
         $sku = $_POST["sku"];
         $name = $_POST["name"];
         $price = $_POST["price"];
+        $value = $_POST["size"];
         $productType = $_POST["productType"];
-        echo $sku . "<br>" . $name . "<br>" . $price . "<br>" . $productType . "<br>";
+        
+        $this->createProduct($sku, $name, $price, $value, $productType);
     }
 }
