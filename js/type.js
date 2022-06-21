@@ -27,7 +27,7 @@ const setFormVisible = (type) => {
   dvdForm.style.display = "none";
 	furnitureForm.style.display = "none";
   bookForm.style.display = "none";
-
+  console.log(bookForm);
 	// Store form visibility toggle in objects
 	const forms = {
 		dvdForm: () => {dvdForm.style.display = "grid"},
@@ -41,6 +41,7 @@ const setFormVisible = (type) => {
 
 // Displays form
 const toggleForm = (type) => {
+  // Gets the required form for display
   const typeForm = productForm(type);
   typeForm();
 }
