@@ -33,6 +33,7 @@ class Product {
     const price = this.addContent(this.price.toFixed(2) + " $");
 
     // value
+    // Adds text for specific product type
     const measurement = {
       dvd: this.addContent("Size: " + this.value + " MB"),
       book: this.addContent("Weight: " + this.value + " KG"),
