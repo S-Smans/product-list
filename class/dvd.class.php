@@ -1,15 +1,18 @@
 <?php
 
 class Dvd extends productType
-{   
-    public function setType()
-    {   
-        $sku = $_POST["sku"];
-        $name = $_POST["name"];
-        $price = $_POST["price"];
-        $value = $_POST["size"];
-        $productType = $_POST["productType"];
-        
-        $this->createProduct($sku, $name, $price, $value, $productType);
+{
+  public function validateType($data)
+  {
+    // removes white space
+    $val = trim($data['size']);
+
+    if (empty($val)) {
+      return ['dvd', 'Size cannot be empty'];
+    } else {
+      if (!preg_match('/^[0-9]{1,12}$/', $val)) {
+        return ['dvd', 'Size must be 1-12 chars & numeric'];
+      }
     }
+  }
 }

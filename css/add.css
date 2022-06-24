@@ -35,7 +35,7 @@ select:focus {
 #dvd-form,
 #book-form {
   display: none;
-  grid-template-columns: repeat(1,1fr);
+  grid-template-columns: repeat(1, 1fr);
   width: 20%;
   padding-top: 25px;
 }
@@ -44,4 +44,8 @@ span {
   display: block;
   overflow: hidden;
   padding: 0px 4px 0px 6px;
+}
+
+.error {
+  color: red;
 }
