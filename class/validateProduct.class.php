@@ -1,10 +1,10 @@
 <?php
-class validateProduct
+class ValidateProduct
 {
 
   private $data;
   private $errors = [];
-  private static $fields = ['sku', 'name', 'price', 'productType'];
+  private static $fields = ['sku', 'name', 'price', 'type'];
 
   public function __construct($post_data, $type)
   {
@@ -67,7 +67,9 @@ class validateProduct
   private function validateProductType()
   {
     $typeError = $this->type->validateType($this->data);
-    $this->addError($typeError[0], $typeError[1]);
+    foreach ($typeError as $key => $value) {
+      $this->addError($key, $value);;
+    }
   }
 
   private function addError($key, $value)
