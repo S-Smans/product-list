@@ -10,6 +10,15 @@ class Product extends Dbh
 		return $stmt->fetchAll();
 	}
 
+	protected function getSKU($sku)
+	{
+		$sql = "SELECT SKU FROM products WHERE SKU = ( ?)";
+		$stmt = $this->connect()->prepare($sql);
+		$stmt->bindParam(1, $sku, PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch();
+	}	
+
 	protected function setProduct($sku, $name, $price, $value, $type)
 	{
 		$sql = "INSERT INTO products (SKU, Name, Price, Value, Type) VALUES (?,?,?,?,?)";

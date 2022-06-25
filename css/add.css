@@ -46,6 +46,7 @@ span {
   padding: 0px 4px 0px 6px;
 }
 
-.error {
+/* Select all id that end with -error */
+p[id$="-error"] {
   color: red;
 }

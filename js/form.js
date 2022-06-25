@@ -19,7 +19,8 @@ $(document).ready(() => {
 
     const submit = $("#submit").val();
 
-    $.post("./includes/validate.inc.php", {
+    // stores data for php in object
+    const formData ={
       sku,
       name,
       price,
@@ -30,8 +31,28 @@ $(document).ready(() => {
       length,
       weight,
       submit,
-    }, (data) => {
-      console.log(data);
+    }
+
+    $.post("./includes/validate.inc.php", formData, (data) => {
+      removeErrors(formData);
+      showErrors(data);
     });
   });
 });
+
+// show errors to user or create product
+function showErrors(data) {
+  console.log(data);
+  data = JSON.parse(data);
+  // show errors
+  for (const error in data) {
+    $("#" + error + "-error").text(data[error]);
+  }
+}
+
+// removes errors for each input
+function removeErrors(data) {
+  for (const error in data) {
+    $("#" + error + "-error").text("").append("<br>");
+  }
+}

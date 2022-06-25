@@ -11,7 +11,7 @@ class Book extends productType
 
     if (empty($weight)) {
       $this->addError('weight', 'Weight cannot be empty');
-    } else if (!preg_match('/^[0-9]{1,12}$/', $weight)) {
+    } elseif (!preg_match('/^[0-9]{1,12}$/', $weight)) {
       $this->addError('weight', 'Weight must be 1-12 chars & numeric');
     }
 

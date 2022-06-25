@@ -9,4 +9,9 @@ class ProductView extends Product
 		$results = $this->getProduct();
 		echo json_encode($results);
 	}
+
+	public function showSKU($sku) 
+	{
+		return $this->getSKU($sku);
+	}
 }

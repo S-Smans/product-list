@@ -24,7 +24,7 @@ class Furniture extends productType
       // Checks the value. ucfirst capitalizes first letter
       if (empty($value)) {
         $this->addError($key, ucfirst($key . ' cannot be empty'));
-      } else if (!preg_match('/^[0-9]{1,12}$/', $value)) {
+      } elseif (!preg_match('/^[0-9]{1,12}$/', $value)) {
         $this->addError($key, ucfirst($key .' must be 1-12 chars & numeric'));
       }
     }

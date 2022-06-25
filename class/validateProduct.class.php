@@ -1,5 +1,5 @@
 <?php
-class ValidateProduct
+class ValidateProduct extends ProductView
 {
 
   private $data;
@@ -31,23 +31,25 @@ class ValidateProduct
   private function validateSKU()
   {
     // removes white space
-    $val = trim($this->data['sku']);
+    $sku = trim($this->data['sku']);
 
-    if (empty($val)) {
+    if (empty($sku)) {
       $this->addError('sku', 'SKU cannot be empty');
-    } else if (!preg_match('/^[a-zA-Z0-9]{6,12}$/', $val)) {
+    } elseif (!preg_match('/^[a-zA-Z0-9]{6,12}$/', $sku)) {
       $this->addError('sku', 'SKU must be 6-12 chars & alphanumeric');
+    } elseif ($this->showSKU($sku)) {
+      $this->addError('sku', 'SKU already exists');
     }
   }
 
   private function validateName()
   {
     // removes white space
-    $val = trim($this->data['name']);
+    $name = trim($this->data['name']);
 
-    if (empty($val)) {
+    if (empty($name)) {
       $this->addError('name', 'Name cannot be empty');
-    } else if (!preg_match('/^[a-zA-Z0-9]{1,50}$/', $val)) {
+    } elseif (!preg_match('/^[a-zA-Z0-9]{1,50}$/', $name)) {
       $this->addError('name', 'Name must be 1-50 chars & alphanumeric');
     }
   }
@@ -55,11 +57,11 @@ class ValidateProduct
   private function validatePrice()
   {
     // removes white space
-    $val = trim($this->data['price']);
+    $price = trim($this->data['price']);
 
-    if (empty($val)) {
+    if (empty($price)) {
       $this->addError('price', 'Price cannot be empty');
-    } else if (!preg_match('/^[0-9]{1,12}$/', $val)) {
+    } elseif (!preg_match('/^[0-9]{1,12}$/', $price)) {
       $this->addError('price', 'Price must be 1-12 chars & numeric');
     }
   }
