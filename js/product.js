@@ -9,7 +9,7 @@ class Product {
 
   // Creates a product card that is displayed in DOM
   createProductCard() {
-    const main = document.querySelector("main");
+    const container = document.querySelector(".container");
 
     // creates elements
     const card = document.createElement("div");
@@ -49,7 +49,7 @@ class Product {
 
     card.append(checkbox);
     card.append(div);
-    main.append(card);
+    container.append(card);
   }
 
   // Adds basic p tag to each property

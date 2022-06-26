@@ -8,7 +8,7 @@ abstract class productType extends ProductContr
     $name = $_POST["name"];
     $price = $_POST["price"];
     $value = $_POST["size"];
-    $productType = $_POST["productType"];
+    $productType = $_POST["type"];
 
     $this->createProduct($sku, $name, $price, $value, $productType);
   }

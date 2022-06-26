@@ -34,8 +34,12 @@ $(document).ready(() => {
     }
 
     $.post("./includes/validate.inc.php", formData, (data) => {
-      removeErrors(formData);
-      showErrors(data);
+      if (data.length) {
+        removeErrors(formData);
+        showErrors(data);
+      } else {
+        document.location.href = "http://localhost/product-list/";
+      }
     });
   });
 });

@@ -49,7 +49,7 @@ class ValidateProduct extends ProductView
 
     if (empty($name)) {
       $this->addError('name', 'Name cannot be empty');
-    } elseif (!preg_match('/^[a-zA-Z0-9]{1,50}$/', $name)) {
+    } elseif (!preg_match('/^[a-zA-Z0-9 ]{1,50}$/', $name)) {
       $this->addError('name', 'Name must be 1-50 chars & alphanumeric');
     }
   }

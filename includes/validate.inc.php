@@ -3,7 +3,12 @@ require_once "./autoload.inc.php";
 require_once "../abstract/productType.abstract.php";
 
 if (isset($_POST['submit'])) {
-  $validator = new ValidateProduct($_POST, new $_POST['type']()); 
+  $productType = new $_POST['type']();
+  $validator = new ValidateProduct($_POST, $productType); 
    $errors = $validator->validateForm();
-   echo json_encode($errors);
+   if ($errors) {
+     echo json_encode($errors);
+   } else {
+    $productType->setType();
+   }
 }
