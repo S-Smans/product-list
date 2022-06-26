@@ -5,6 +5,17 @@ class Furniture extends productType
   private $errors = [];
   private $measurements = [];
 
+  public function setType()
+  {
+    $sku = $_POST["sku"];
+    $name = $_POST["name"];
+    $price = $_POST["price"];
+    $value = $_POST["height"] . "x" . $_POST["width"] . "x" . $_POST["length"];
+    $productType = $_POST["type"];
+
+    $this->createProduct($sku, $name, $price, $value, $productType);
+  }
+
   public function validateType($data)
   {
     // Associative array for each measurement

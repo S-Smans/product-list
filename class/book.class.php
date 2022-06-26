@@ -4,6 +4,17 @@ class Book extends productType
 {
   private $errors = [];
 
+  public function setType()
+  {
+    $sku = $_POST["sku"];
+    $name = $_POST["name"];
+    $price = $_POST["price"];
+    $value = $_POST["weight"];
+    $productType = $_POST["type"];
+
+    $this->createProduct($sku, $name, $price, $value, $productType);
+  }
+
   public function validateType($data)
   {
     // removes white space

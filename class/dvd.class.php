@@ -18,8 +18,20 @@ class Dvd extends productType
     return $this->errors;
   }
 
+  public function setType()
+  {
+    $sku = $_POST["sku"];
+    $name = $_POST["name"];
+    $price = $_POST["price"];
+    $value = $_POST["size"];
+    $productType = $_POST["type"];
+
+    $this->createProduct($sku, $name, $price, $value, $productType);
+  }
+
   private function addError($key, $value)
   {
     $this->errors[$key] = $value;
   }
+  
 }
