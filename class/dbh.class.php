@@ -3,9 +3,9 @@
 class Dbh
 {
 	private $host = "localhost";
-	private $user = "root";
-	private $pass = "";
-	private $name = "product_list";
+	private $user = "id18818899_sandis";
+	private $pass = "*dPID+l~]fVO)2cW";
+	private $name = "id18818899_product_list";
 
 	protected function connect()
 	{

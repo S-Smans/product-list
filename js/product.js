@@ -20,6 +20,7 @@ class Product {
 
     // card
     card.className = "card";
+    card.id = this.id + "-card";
 
     // checkbox
     checkbox.type = "checkbox";
@@ -91,6 +92,14 @@ class ProductDelete {
       this.products.splice(index, 1);
     }
   }
+
+  getProducts() {
+    return this.products;
+  }
+
+  removeAllProducts() {
+    this.products = [];
+  }
 }
 
 // Runs when website loads
@@ -121,5 +130,26 @@ const deleteProducts = new ProductDelete();
 const massDelete = document.getElementById("delete-product-btn");
 
 massDelete.addEventListener("click", () => {
-  console.log(deleteProducts.products);
+  const products = deleteProducts.getProducts();
+  // is product empty
+  if (products.length) {
+    // removes products from DOM by deleting the card
+    products.forEach((id) => {
+      console.log(id);
+      document.getElementById(id + "-card").remove();
+    });
+    // deletes product from database
+    $.post(
+      "./includes/deleteProducts.inc.php",
+      {
+        productsId: JSON.stringify(products),
+        submit: true,
+      },
+      (data) => {
+        console.log(data);
+      }
+    );
+  }
+  // all products for deletion is emptied
+  deleteProducts.removeAllProducts();
 });

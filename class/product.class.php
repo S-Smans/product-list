@@ -25,4 +25,11 @@ class Product extends Dbh
 		$stmt = $this->connect()->prepare($sql);
 		$stmt->execute([$sku, $name, $price, $value, $type]);
 	}
+
+	protected function deleteProducts($productsId) {
+		// Join array elements with a string
+		$ids = implode(",", $productsId);
+		$sql = "DELETE FROM products WHERE productId IN ($ids)";
+		$stmt = $this->connect()->query($sql);
+	}
 }

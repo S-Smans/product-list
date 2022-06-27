@@ -38,7 +38,7 @@ $(document).ready(() => {
         removeErrors(formData);
         showErrors(data);
       } else {
-        document.location.href = "http://localhost/product-list/";
+        document.location.href = "https://sandissm.000webhostapp.com/";
       }
     });
   });
