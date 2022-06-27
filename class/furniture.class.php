@@ -1,6 +1,6 @@
 <?php
 
-class Furniture extends productType
+class Furniture extends ProductType
 {
   private $errors = [];
   private $measurements = [];
@@ -29,14 +29,14 @@ class Furniture extends productType
   }
 
   private function validateMeasurements($measurements)
-  { 
+  {
     foreach ($measurements as $key => $value) {
-      
+
       // Checks the value. ucfirst capitalizes first letter
       if (empty($value)) {
         $this->addError($key, ucfirst($key . ' cannot be empty'));
       } elseif (!preg_match('/^[0-9]{1,12}$/', $value)) {
-        $this->addError($key, ucfirst($key .' must be 1-12 chars & numeric'));
+        $this->addError($key, ucfirst($key . ' must be 1-12 chars & numeric'));
       }
     }
   }
@@ -46,7 +46,8 @@ class Furniture extends productType
     $this->errors[$key] = $value;
   }
 
-  private function addMeasurement($key, $value) {
+  private function addMeasurement($key, $value)
+  {
     $this->measurements[$key] = $value;
   }
 }

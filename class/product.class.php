@@ -17,7 +17,7 @@ class Product extends Dbh
 		$stmt->bindParam(1, $sku, PDO::PARAM_STR);
 		$stmt->execute();
 		return $stmt->fetch();
-	}	
+	}
 
 	protected function setProduct($sku, $name, $price, $value, $type)
 	{
@@ -26,7 +26,8 @@ class Product extends Dbh
 		$stmt->execute([$sku, $name, $price, $value, $type]);
 	}
 
-	protected function deleteProducts($productsId) {
+	protected function deleteProducts($productsId)
+	{
 		// Join array elements with a string
 		$ids = implode(",", $productsId);
 		$sql = "DELETE FROM products WHERE productId IN ($ids)";

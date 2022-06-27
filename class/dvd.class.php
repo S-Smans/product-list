@@ -1,6 +1,6 @@
 <?php
 
-class Dvd extends productType
+class Dvd extends ProductType
 {
   private $errors = [];
 
@@ -33,5 +33,4 @@ class Dvd extends productType
   {
     $this->errors[$key] = $value;
   }
-  
 }

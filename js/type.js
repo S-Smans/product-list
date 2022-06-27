@@ -41,4 +41,3 @@ const toggleForm = (type) => {
 
 // Loads form when user enters the page
 toggleForm(selection.value);
-

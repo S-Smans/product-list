@@ -1,6 +1,6 @@
 <?php
 
-class Book extends productType
+class Book extends ProductType
 {
   private $errors = [];
 

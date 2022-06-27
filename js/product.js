@@ -4,7 +4,7 @@ class Product {
     this.id = id;
     this.sku = sku;
     this.name = name;
-    this.price = price;
+    this.price = +price;
     this.value = value;
     this.type = type;
   }
@@ -34,12 +34,6 @@ class Product {
       } else {
         deleteProducts.removeProduct(e.target.id);
       }
-
-      // store the check id in array
-      // after mass delete click send them to a different php include file
-      // create a delete function in product class
-      // create a php  file where the checkbox id's will be sent to
-      // php include file creates productContr object that calls deleteProduct with array paramater that has to be deleted
     });
 
     // SKU
@@ -79,26 +73,28 @@ class Product {
   }
 }
 
+// class that stores all product for deletion
 class ProductDelete {
-  products = [];
+  // stores product id
+  productsId = [];
 
   addProduct(product) {
-    this.products.push(product);
+    this.productsId.push(product);
   }
 
   removeProduct(product) {
-    const index = this.products.indexOf(product);
+    const index = this.productsId.indexOf(product);
     if (index > -1) {
-      this.products.splice(index, 1);
+      this.productsId.splice(index, 1);
     }
   }
 
   getProducts() {
-    return this.products;
+    return this.productsId;
   }
 
   removeAllProducts() {
-    this.products = [];
+    this.productsId = [];
   }
 }
 
@@ -135,20 +131,13 @@ massDelete.addEventListener("click", () => {
   if (products.length) {
     // removes products from DOM by deleting the card
     products.forEach((id) => {
-      console.log(id);
       document.getElementById(id + "-card").remove();
     });
     // deletes product from database
-    $.post(
-      "./includes/deleteProducts.inc.php",
-      {
-        productsId: JSON.stringify(products),
-        submit: true,
-      },
-      (data) => {
-        console.log(data);
-      }
-    );
+    $.post("./includes/deleteProducts.inc.php", {
+      productsId: JSON.stringify(products),
+      submit: true,
+    });
   }
   // all products for deletion is emptied
   deleteProducts.removeAllProducts();

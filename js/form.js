@@ -2,14 +2,14 @@
 $(document).ready(() => {
   $("form").submit((e) => {
     e.preventDefault();
-    
+
     const sku = $("#sku").val();
     const name = $("#name").val();
     const price = $("#price").val();
     // product type
     const type = $("#productType").val();
     // dvd
-    const size = $("#size").val(); 
+    const size = $("#size").val();
     // furniture
     const height = $("#height").val();
     const width = $("#width").val();
@@ -20,7 +20,7 @@ $(document).ready(() => {
     const submit = $("#submit").val();
 
     // stores data for php in object
-    const formData ={
+    const formData = {
       sku,
       name,
       price,
@@ -31,7 +31,7 @@ $(document).ready(() => {
       length,
       weight,
       submit,
-    }
+    };
 
     $.post("./includes/validate.inc.php", formData, (data) => {
       if (data.length) {
@@ -46,7 +46,6 @@ $(document).ready(() => {
 
 // show errors to user or create product
 function showErrors(data) {
-  console.log(data);
   data = JSON.parse(data);
   // show errors
   for (const error in data) {
@@ -57,6 +56,8 @@ function showErrors(data) {
 // removes errors for each input
 function removeErrors(data) {
   for (const error in data) {
-    $("#" + error + "-error").text("").append("<br>");
+    $("#" + error + "-error")
+      .text("")
+      .append("<br>");
   }
 }

@@ -8,7 +8,8 @@ class ProductContr extends Product
         $this->setProduct($sku, $name, $price, $value, $type);
     }
 
-    public function removeProducts($productsId) {
+    public function removeProducts($productsId)
+    {
         $this->deleteProducts($productsId);
     }
 }
