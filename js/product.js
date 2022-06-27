@@ -1,5 +1,7 @@
+// Creates products that are visible in product list page
 class Product {
-  constructor(sku, name, price, value, type) {
+  constructor(id, sku, name, price, value, type) {
+    this.id = id;
     this.sku = sku;
     this.name = name;
     this.price = price;
@@ -22,6 +24,22 @@ class Product {
     // checkbox
     checkbox.type = "checkbox";
     checkbox.className = "delete-checkbox";
+
+    // stores the productId from DB in checkbox id
+    checkbox.id = this.id;
+    checkbox.addEventListener("click", (e) => {
+      if (e.target.checked) {
+        deleteProducts.addProduct(e.target.id);
+      } else {
+        deleteProducts.removeProduct(e.target.id);
+      }
+
+      // store the check id in array
+      // after mass delete click send them to a different php include file
+      // create a delete function in product class
+      // create a php  file where the checkbox id's will be sent to
+      // php include file creates productContr object that calls deleteProduct with array paramater that has to be deleted
+    });
 
     // SKU
     const pSKU = this.addContent(this.sku);
@@ -60,6 +78,21 @@ class Product {
   }
 }
 
+class ProductDelete {
+  products = [];
+
+  addProduct(product) {
+    this.products.push(product);
+  }
+
+  removeProduct(product) {
+    const index = this.products.indexOf(product);
+    if (index > -1) {
+      this.products.splice(index, 1);
+    }
+  }
+}
+
 // Runs when website loads
 $(document).ready(() => {
   $.get("./includes/loadProducts.inc.php", (data) => {
@@ -68,6 +101,7 @@ $(document).ready(() => {
     // creates a Product object for each row
     data.forEach((prop) => {
       const products = new Product(
+        prop["productId"],
         prop["SKU"],
         prop["Name"],
         prop["Price"],
@@ -79,4 +113,13 @@ $(document).ready(() => {
       products.createProductCard();
     });
   });
+});
+
+// global variable that stores product id for deletion
+const deleteProducts = new ProductDelete();
+
+const massDelete = document.getElementById("delete-product-btn");
+
+massDelete.addEventListener("click", () => {
+  console.log(deleteProducts.products);
 });
