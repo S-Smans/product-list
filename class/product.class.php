@@ -29,7 +29,6 @@ class Product extends Dbh
 	protected function deleteProducts($productsId)
 	{
 		$sql = "DELETE FROM products WHERE productId IN (:" . implode(',:', array_keys($productsId)) . ")";
-		echo $sql;
 		$stmt = $this->connect()->prepare($sql);
 		foreach ($productsId as $k => $id) {
 			$stmt->bindValue(":" . $k, $id);

@@ -137,8 +137,6 @@ massDelete.addEventListener("click", () => {
     $.post("./includes/deleteProducts.inc.php", {
       productsId: JSON.stringify(products),
       submit: true,
-    }, (data) => {
-      console.log(data)
     });
   }
   // all products for deletion is emptied
