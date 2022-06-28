@@ -28,9 +28,12 @@ class Product extends Dbh
 
 	protected function deleteProducts($productsId)
 	{
-		// Join array elements with a string
-		$ids = implode(",", $productsId);
-		$sql = "DELETE FROM products WHERE productId IN ($ids)";
-		$stmt = $this->connect()->query($sql);
+		$sql = "DELETE FROM products WHERE productId IN (:" . implode(',:', array_keys($productsId)) . ")";
+		echo $sql;
+		$stmt = $this->connect()->prepare($sql);
+		foreach ($productsId as $k => $id) {
+			$stmt->bindValue(":" . $k, $id);
+		}
+		$stmt->execute();
 	}
 }
